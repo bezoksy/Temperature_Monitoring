@@ -1,0 +1,40 @@
+﻿<Window x:Class="FishMonitoringWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FishMonitoringWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="fishName" Grid.Column="1"/>
+        <TextBox x:Name="maxTemp" Grid.Row="1" Grid.Column="1"/>
+        <TextBox x:Name="minTemp" Grid.Row="2" Grid.Column="1"/>
+        <TextBox x:Name="maxTIme" Grid.Row="3" Grid.Column="1"/>
+        <TextBox x:Name="minTime" Grid.Row="4" Grid.Column="1"/>
+        <TextBox x:Name="datetime" Grid.Row="5" Grid.Column="1"/>
+        <TextBox x:Name="temperature" Grid.Row="6" Grid.Column="1"/>
+        <Label Content="Название рыбы" Grid.Row="0"/>
+        <Label Content="Максимальная температура" Grid.Row="1"/>
+        <Label Content="Минимальная температура" Grid.Row="2"/>
+        <Label Content="Максимальное время" Grid.Row="3"/>
+        <Label Content="Минимальное время" Grid.Row="4"/>
+        <Label Content="Дата и время" Grid.Row="5"/>
+        <Label Content="Температура" Grid.Row="6"/>
+        <Button x:Name="btnReport" Content="Сформировать отчет" Grid.Row="7" Grid.ColumnSpan="2" Click="btnReport_Click"/>
+    </Grid> 
+</Window>
