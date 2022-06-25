@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace FishMonitoringCore
 {
@@ -58,7 +59,7 @@ namespace FishMonitoringCore
             {
                 report = "All OK";
             }
-
+            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\test.txt", report, Encoding.Default);
             return report;
         }
     }
