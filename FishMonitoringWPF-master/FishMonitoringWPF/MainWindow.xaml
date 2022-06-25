@@ -20,6 +20,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBox x:Name="fishName" Grid.Column="1"/>
         <TextBox x:Name="maxTemp" Grid.Row="1" Grid.Column="1" />
@@ -37,5 +38,5 @@
         <Label Content="Температура" Grid.Row="6"/>
         <Button x:Name="btnReport" Content="Сформировать отчет" Grid.Row="7" Grid.ColumnSpan="2" Click="btnReport_Click"/>
         <Button x:Name="btnSaveReport" Content="Сохранить отчет" Grid.Row="8" Grid.ColumnSpan="2" Click="btnSaveReport_Click" IsEnabled="False"/>
-    </Grid>
+    </Grid> 
 </Window>

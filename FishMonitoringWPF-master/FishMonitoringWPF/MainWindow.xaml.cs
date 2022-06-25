@@ -33,22 +33,21 @@ namespace FishMonitoringWPF
             int interval = 10;
             if (Validate())
             {
+            string tempData = temperature.Text;
+            DateTime time = Convert.ToDateTime(datetime.Text);
 
-                string tempData = temperature.Text;
-                DateTime time = Convert.ToDateTime(datetime.Text);
-
-                Quality quality = new TempQuality(interval, tempData, time);
-                double maxtemp = Convert.ToDouble(maxTemp.Text);
-                int maxtine = Convert.ToInt32(maxTIme.Text);
-                int mintime = Convert.ToInt32(minTime.Text);
-                double mintemp = Convert.ToDouble(minTemp.Text);
-                Fish fish = new FrozenFish(quality, maxtemp, mintemp, new TimeSpan(0, maxtine, 0), new TimeSpan(0, mintime, 0));
-
+            Quality quality = new TempQuality(interval, tempData, time);
+            double maxtemp = Convert.ToDouble(maxTemp.Text);
+            int maxtine = Convert.ToInt32(maxTIme.Text);
+            int mintime = Convert.ToInt32(minTime.Text);
+            double mintemp = Convert.ToDouble(minTemp.Text);
+            Fish fish = new FrozenFish(quality, maxtemp, mintemp, new TimeSpan(0, maxtine, 0), new TimeSpan(0, mintime, 0));
                 currentReport = fish.GetReport();
-                MessageBox.Show(currentReport);
+            MessageBox.Show(currentReport);
                 btnSaveReport.IsEnabled = true;
             }
         }
+
         private bool Validate()
         {
             double temp = 0;
@@ -71,12 +70,12 @@ namespace FishMonitoringWPF
             int temp2 = 0;
             if (!Int32.TryParse(maxTIme.Text, out temp2))
             {
-                if (Convert.ToInt32(minTime.Text) < 0)
+                if(Convert.ToInt32(minTime.Text) < 0)
                 {
-                    MessageBox.Show("Нужно ввести числа в поле с временем");
-                    maxTIme.Focusable = true;
-                    Keyboard.Focus(maxTIme);
-                    return false;
+                MessageBox.Show("Нужно ввести числа в поле с временем");
+                maxTIme.Focusable = true;
+                Keyboard.Focus(maxTIme);
+                return false;
 
                 }
             }
@@ -84,12 +83,12 @@ namespace FishMonitoringWPF
             int temp3 = 0;
             if (!Int32.TryParse(minTime.Text, out temp3))
             {
-                if (Convert.ToInt32(minTime.Text) < 0)
+                if(Convert.ToInt32(minTime.Text) < 0)
                 {
-                    MessageBox.Show("Нужно ввести числа в поле с временем");
-                    minTime.Focusable = true;
-                    Keyboard.Focus(minTime);
-                    return false;
+                MessageBox.Show("Нужно ввести числа в поле с временем");
+                minTime.Focusable = true;
+                Keyboard.Focus(minTime);
+                return false;
 
                 }
             }
@@ -116,6 +115,7 @@ namespace FishMonitoringWPF
                 Keyboard.Focus(maxTemp);
             }
         }
+
         private void btnSaveReport_Click(object sender, RoutedEventArgs e)
         {
             File.WriteAllText($"{Directory.GetCurrentDirectory()}\\test.txt", currentReport, Encoding.Default);
