@@ -24,17 +24,21 @@ namespace FishMonitoringCore
     public class FrozenFish : Fish
     {
         public double maxStoreTemp;
-        public TimeSpan deathTime;
+        public double minStoreTemp;
+        public TimeSpan deathTimeUpper;
+        public TimeSpan deathTimeLower;
 
-        public FrozenFish(Quality q, double t, TimeSpan d) : base(q)
+        public FrozenFish(Quality q, double maxTemp, double minTemp, TimeSpan dUpper, TimeSpan dLower) : base(q)
         {
-            maxStoreTemp = t;
-            deathTime = d;
+            maxStoreTemp = maxTemp;
+            minStoreTemp = minTemp;
+            deathTimeUpper = dUpper;
+            deathTimeLower = dLower;
         }
 
         public override bool isValid()
         {
-            return !((quality as TempQuality).GetTempUpperTime(maxStoreTemp) > deathTime);
+            return !((quality as TempQuality).GetTempUpperTime(maxStoreTemp) > deathTimeUpper || ((quality as TempQuality).GetTempLowerTime(minStoreTemp) > deathTimeLower));
         }
 
         public override string GetReport()
@@ -44,7 +48,7 @@ namespace FishMonitoringCore
             {
                 foreach (DateTime key in (quality as TempQuality).temperature.Keys)
                 {
-                    if ((quality as TempQuality).temperature[key] > maxStoreTemp)
+                    if ((quality as TempQuality).temperature[key] > maxStoreTemp || (quality as TempQuality).temperature[key] < minStoreTemp)
                     {
                         report += "\n" + $"{key}\t{(quality as TempQuality).temperature[key]}";
                     }

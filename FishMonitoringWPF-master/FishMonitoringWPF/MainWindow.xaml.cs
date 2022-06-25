@@ -30,8 +30,15 @@ namespace FishMonitoringWPF
         {
             int interval = 10;
             string tempData = temperature.Text;
+            DateTime time = Convert.ToDateTime(datetime.Text);
 
-
+            Quality quality = new TempQuality(interval, tempData, time);
+            double maxtemp = Convert.ToDouble(maxTemp.Text);
+            int maxtine = Convert.ToInt32(maxTIme.Text);
+            int mintime = Convert.ToInt32(minTime.Text);
+            double mintemp = Convert.ToDouble(minTemp.Text);
+            Fish fish = new FrozenFish(quality, maxtemp, mintemp, new TimeSpan(0, maxtine, 0), new TimeSpan(0, mintime, 0));
+            MessageBox.Show(fish.GetReport());
         }
     }
 }

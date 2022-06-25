@@ -35,10 +35,9 @@ namespace FishMonitoringCore
             }
         }
 
-        public TempQuality(int timeInterval, string temperatureData) : this()
+        public TempQuality(int timeInterval, string temperatureData, DateTime time) : this()
         {
 
-            var time = DateTime.Now;
             var interval = TimeSpan.FromMinutes(timeInterval);
             foreach (var t in temperatureData.Split(' '))
             {
@@ -76,7 +75,18 @@ namespace FishMonitoringCore
 
         public TimeSpan GetTempLowerTime(double temp)
         {
-            return new TimeSpan();
+            TimeSpan result = new TimeSpan();
+            foreach (DateTime k1 in temperature.Keys)
+            {
+                foreach (DateTime k2 in temperature.Keys)
+                {
+                    if (k2 > k1 && temperature[k1] < temp && temperature[k2] < temp)
+                    {
+                        result += k2 - k1;
+                    }
+                }
+            }
+            return result;
         }
     }
 }
