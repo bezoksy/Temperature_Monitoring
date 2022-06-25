@@ -1,3 +1,4 @@
+//Giniyatullin_Ilyas_220_task_FishMonitoring 25.06.2022
 using System.Windows;
 
 [assembly: ThemeInfo(
