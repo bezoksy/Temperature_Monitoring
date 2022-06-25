@@ -59,8 +59,13 @@ namespace FishMonitoringCore
             {
                 report = "All OK";
             }
-            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\test.txt", report, Encoding.Default);
             return report;
+        }
+
+        public void SaveReport()
+        {
+
+            File.WriteAllText($"{Directory.GetCurrentDirectory()}\\test.txt", GetReport(), Encoding.Default);
         }
     }
 }

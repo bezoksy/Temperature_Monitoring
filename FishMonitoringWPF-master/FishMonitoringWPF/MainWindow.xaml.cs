@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FishMonitoringCore;
+using System.IO;
 
 namespace FishMonitoringWPF
 {
@@ -21,6 +22,7 @@ namespace FishMonitoringWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string currentReport;
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +40,10 @@ namespace FishMonitoringWPF
             int mintime = Convert.ToInt32(minTime.Text);
             double mintemp = Convert.ToDouble(minTemp.Text);
             Fish fish = new FrozenFish(quality, maxtemp, mintemp, new TimeSpan(0, maxtine, 0), new TimeSpan(0, mintime, 0));
-            MessageBox.Show(fish.GetReport());
+
+            currentReport = fish.GetReport();
+            MessageBox.Show(currentReport);
+            btnSaveReport.IsEnabled = true;
         }
     }
 }
