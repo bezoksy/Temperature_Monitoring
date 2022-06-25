@@ -22,10 +22,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBox x:Name="fishName" Grid.Column="1"/>
-        <TextBox x:Name="maxTemp" Grid.Row="1" Grid.Column="1"/>
-        <TextBox x:Name="minTemp" Grid.Row="2" Grid.Column="1"/>
-        <TextBox x:Name="maxTIme" Grid.Row="3" Grid.Column="1"/>
-        <TextBox x:Name="minTime" Grid.Row="4" Grid.Column="1"/>
+        <TextBox x:Name="maxTemp" Grid.Row="1" Grid.Column="1" />
+        <TextBox x:Name="minTemp" Grid.Row="2" Grid.Column="1" />
+        <TextBox x:Name="maxTIme" Grid.Row="3" Grid.Column="1" />
+        <TextBox x:Name="minTime" Grid.Row="4" Grid.Column="1" />
         <TextBox x:Name="datetime" Grid.Row="5" Grid.Column="1"/>
         <TextBox x:Name="temperature" Grid.Row="6" Grid.Column="1"/>
         <Label Content="Название рыбы" Grid.Row="0"/>
